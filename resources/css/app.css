@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+
+@source '../../resources/views/**/*.blade.php';
+@source '../../app/**/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: Georgia, 'Times New Roman', ui-serif, serif;
+
+    /* NPD brand tokens (doc 22 §3) — mapped to the green-led identity */
+    --color-brand-50: #f0f9f4;
+    --color-brand-100: #dcf1e3;
+    --color-brand-200: #bce3cc;
+    --color-brand-300: #8ecdab;
+    --color-brand-400: #5ab182;
+    --color-brand-500: #2f905e;
+    --color-brand-600: #1e7348;
+    --color-brand-700: #175c3a;
+    --color-brand-800: #12482e;
+    --color-brand-900: #0d3a25;
+    --color-brand-950: #062117;
+
+    --color-surface: #ffffff;
+    --color-surface-muted: #f6f8f6;
+    --color-ink: #14201a;
+    --color-ink-soft: #4b5b52;
+    --color-line: #e3e9e4;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-surface text-ink antialiased;
+    }
+}
+
+@layer components {
+    .npd-container {
+        @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+    }
+
+    .npd-kicker {
+        @apply text-xs font-semibold tracking-[0.14em] uppercase;
+    }
+
+    .npd-card-title {
+        @apply font-semibold leading-snug text-ink transition-colors group-hover:text-brand-700;
+    }
+
+    /* Long-form article typography (doc 22 §5) */
+    .article-body {
+        @apply font-serif text-[1.0625rem] leading-[1.8] text-ink;
+    }
+
+    .article-body > * + * {
+        @apply mt-6;
+    }
+
+    .article-body h2 {
+        @apply mt-10 font-sans text-2xl font-bold tracking-tight text-ink;
+    }
+
+    .article-body h3 {
+        @apply mt-8 font-sans text-xl font-bold tracking-tight text-ink;
+    }
+
+    .article-body a {
+        @apply font-medium text-brand-700 underline decoration-brand-300 underline-offset-2 hover:text-brand-800;
+    }
+
+    .article-body blockquote {
+        @apply border-l-4 border-brand-500 pl-5 font-sans text-lg font-medium text-brand-900 italic;
+    }
+
+    .article-body ul {
+        @apply list-disc space-y-2 pl-6;
+    }
+
+    .article-body ol {
+        @apply list-decimal space-y-2 pl-6;
+    }
+
+    .article-body img {
+        @apply rounded-lg;
+    }
+
+    .article-body figcaption {
+        @apply mt-2 text-center text-sm text-ink-soft;
+    }
+
+    .article-body table {
+        @apply w-full border-collapse text-base;
+    }
+
+    .article-body th,
+    .article-body td {
+        @apply border border-line px-3 py-2 text-left;
+    }
+
+    .article-body pre {
+        @apply overflow-x-auto rounded-lg bg-ink p-4 text-sm text-white;
+    }
+
+    .article-body code {
+        @apply rounded bg-surface-muted px-1 py-0.5 text-sm;
+    }
+}
